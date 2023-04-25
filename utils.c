@@ -27,10 +27,12 @@ int readline(int fd,char** buff)
                                 exit(0);
                         }
                 }
-                (*buff)[count++]=c;
-                 if(c=='\n' || c==EOF)
+                
+                if(c=='\n' || c==EOF)
                 {
                         break;
+                }else{
+                    (*buff)[count++]=c;
                 }
  
         }
