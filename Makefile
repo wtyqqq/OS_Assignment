@@ -1,3 +1,6 @@
+# Author: Tianyi Wang(tianyiwang58@gmail.com)
+# For compiling assignment 1
+
 objs = main.o utils.o process_data.o
 
 out : $(objs)

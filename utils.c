@@ -4,6 +4,7 @@
 #include <stdlib.h>
 int readline(int fd,char** buff)
 {
+        // 针对大文件，使用自己定义的readline函数一行一行的读。
         int rl=-1;
         char c;
         long maxlength=128;

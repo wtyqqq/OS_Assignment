@@ -10,9 +10,6 @@
 '''
 
 # here put the import lib
-import os
-import sys
-
 
 def gen_data():
     # 生成1到1000的数据

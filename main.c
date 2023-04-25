@@ -39,8 +39,6 @@ int main()
 				while (read_num > 0)
 				{
 					num = atoi(buff);
-					// printf("read_num:%d\n", read_num);
-					// printf("num:%lld\n", num);
 					write(pipe_fd[1], &num, sizeof(long long int));
 					read_num = readline(fd, &buff); // 针对大文件，使用自己定义的
 				}
