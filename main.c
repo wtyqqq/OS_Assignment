@@ -21,10 +21,9 @@ int main()
 			}
 			else
 			{	
-
-				char buf[1024];
-				readline(fd,buf);
-				printf("line:%s\n", buf);
+				char *buff = NULL;
+				readline(fd,&buff); // 针对大文件，使用自己定义的readline函数一行一行的读。
+				printf("line:%s", buff);
 			}
 		}
 		else
