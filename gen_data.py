@@ -14,7 +14,7 @@
 def gen_data():
     # 生成1到1000的数据
     with open('testdata.txt', 'w') as f:
-        for i in range(1, 1001):
+        for i in range(1, 1000001):
             f.write(str(i) + '\n')
 
 
