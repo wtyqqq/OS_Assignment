@@ -6,7 +6,7 @@ Tianyi Wang 2023/06/13
 
 作业的报告在`report`目录下，若要从源码构建，请使用  `xelatex -> biber/bibtex -> xelatex -> xelatex`（编译两次生成reference）的编译链，若没有编译环境，请直接查看目录下的`report.pdf`。
 
-文件结构
+## 文件结构
 ```bash
 .
 ├── data 包含生成测试数据的 Python 脚本和生成好的测试数据。
