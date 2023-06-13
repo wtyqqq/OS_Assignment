@@ -26,7 +26,7 @@ int display_page(char *ptr, int offset)
     buf[index] = '\0';     // 添加字符串结束符
     system("clear");
     printf("%s\n", buf);
-    printf("(u/U 1 line up, d/D 1 line down, Enter one screen):");
+    printf("(K/k 1 line up, j/J 1 line down, Enter one screen):");
     return index;
 }
 
@@ -45,13 +45,13 @@ int next_row(char *ptr, int offset)
             break; // 找到上一页的行末位置
     }
     for (index = 0; index < 100; index++)
-        if (ptr[i] == '\n')
+        if (ptr[index] == '\n')
             break;                    // 找到下一行的行末位置
     memcpy(buffer, ptr + j + 1, index - j); // 将内容复制到缓冲区
     buffer[index - j - 1] = '\0';         // 添加字符串结束符
     system("clear");
     printf("%s\n", buffer);
-    printf("(u/U 1 line up, d/D 1 line down, Enter one screen):");
+    printf("(K/k 1 line up, j/J 1 line down, Enter one screen):");
     return index;
 }
 
@@ -85,7 +85,7 @@ int last_row(char *s, int d)
         buffer[d - 1] = '\0'; // 添加字符串结束符
         system("clear");
         printf("%s\n", buffer);
-        printf("(u/U 1 line up, d/D 1 line down, Enter one screen):");
+        printf("(K/k 1 line up, j/J 1 line down, Enter one screen):");
         return d - 1;
     }
     else
@@ -94,7 +94,7 @@ int last_row(char *s, int d)
         buffer[i - j - 1] = '\0';         // 添加字符串结束符
         system("clear");
         printf("%s\n", buffer);
-        printf("(u/U 1 line up, d/D 1 line down, Enter one screen):");
+        printf("(K/k 1 line up, j/J 1 line down, Enter one screen):");
         return i;
     }
 }
@@ -143,11 +143,11 @@ int main(int argc, char *argv[])
             choice = getchar();
             break;
         }
-        else if (choice == ' ' || choice == '\n') // 空格键h或者换行下翻一页
+        else if (choice == ' ' || choice == '\n') 
             now = now + 1 + display_page(start, now);
-        else if (choice == 'D' || choice == 'd') // D 或 d 键下翻一行
+        else if (choice == 'j' || choice == 'J')
             now = now + 1 + next_row(start, now);
-        else if (choice == 'U' || choice == 'u') // U 或 u 键上翻一页
+        else if (choice == 'k' || choice == 'K')
             now = 1 + last_row(start, now);
         choice = getchar();
     }

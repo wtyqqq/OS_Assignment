@@ -3,8 +3,8 @@
 
 objs = main.o process_data.o
 
-out : $(objs)
-	cc -O3 -o out $(objs)
+pipe : $(objs)
+	cc -O3 -o pipe $(objs)
 	rm $(objs) *.gch
 
 main.o : main.c
@@ -16,4 +16,4 @@ process_data.o : process_data.c
 .PHONY: clean
 
 clean: 
-	rm $(objs) out *.gch
+	rm $(objs) pipe *.gch
