@@ -9,12 +9,21 @@
 #include "sys/time.h"
 
 
-int main()
+int main(int argc, char *argv[])
 {
 	struct timeval start,end;  
 	pid_t pid, pid1, pid2, pid3;
 	int pipe_fd[2];
 	int pipe2_fd[2];
+	if (argc != 3)
+    {
+        printf("usage：%s <filename to read> <filename to write>\n", argv[0]);
+        exit(1);
+    }
+    char *read_filename = argv[1];
+    char *write_filename = argv[2];
+
+
 	gettimeofday(&start, NULL); 
 	if (pipe(pipe_fd) == -1)
 	{
@@ -29,7 +38,7 @@ int main()
 		if (pid1 == 0) // 进程1：读取文件，写入管道
 		{
 			// 读取testdata文件
-			FILE* file = fopen("../testdata.txt", "r");
+			FILE* file = fopen(read_filename, "r");
 			int read_num;
 			char *buff = NULL;
 			long long int num;
@@ -84,7 +93,7 @@ int main()
 			// 进程3：读取管道，写入文件
 			long long int read_num2;
 			FILE* fd2;
-			fd2 = fopen("../2.txt", "w"); // 以只写的方式打开文件，如果文件不存在则创建，如果文件存在则清空
+			fd2 = fopen(write_filename, "w"); // 以只写的方式打开文件，如果文件不存在则创建，如果文件存在则清空
 			while (read(pipe2_fd[0], &read_num2, sizeof(long long int)))
 			{
 				if (read_num2 == -1)

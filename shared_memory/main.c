@@ -19,12 +19,20 @@ typedef struct{
     long long int numbers[MAX_NUM];
 }data_shared;
 
-int main()
+int main(int argc, char *argv[])
 {   
     void *shm = NULL;
     struct timeval start, end;  
 	pid_t pid, pid1, pid2, pid3;
     int shmid; 
+    if (argc != 3)
+    {
+        printf("usage：%s <filename to read> <filename to write>\n", argv[0]);
+        exit(1);
+    }
+    char *read_filename = argv[1];
+    char *write_filename = argv[2];
+
     gettimeofday(&start, NULL); 
     shmid = shmget((key_t)1233, sizeof(data_shared), 0666|IPC_CREAT);
     if (shmid == -1)
@@ -44,7 +52,7 @@ int main()
             fprintf(stderr, "shmat failed\n");
             exit(EXIT_FAILURE);
         }
-        FILE* file = fopen("../testdata.txt", "r");
+        FILE* file = fopen(read_filename, "r");
         int read_num;
         char *buff = NULL;
         long long int num;
@@ -81,7 +89,7 @@ int main()
     pid3 = fork();
     if (pid3 == 0) {
         sem_wait(&shared_data_ptr->sem2);
-        FILE* file = fopen("../shared_mem.txt", "w");
+        FILE* file = fopen(write_filename, "w");
         for (int i = 0; i < shared_data_ptr->count; i++) {
             fprintf(file, "%lld\n", shared_data_ptr->numbers[i]);
         }
