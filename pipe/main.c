@@ -89,13 +89,16 @@ int main()
 				else
 				{ // 进程3：读取管道，写入文件
 					long long int read_num2;
+					int fd2;
+					fd2 = open("../2.txt", O_WRONLY | O_CREAT | O_TRUNC, 0666); // 以只写的方式打开文件，如果文件不存在则创建，如果文件存在则清空
 					while (read(pipe2_fd[0], &read_num2, sizeof(long long int)))
 					{
 						if (read_num2 == -1)
 						{
 							break;
 						}
-						printf("receive_num(p3):%lld\n", read_num2);
+						// printf("receive_num(p3):%lld\n", read_num2);
+						write_line(fd2, read_num2);
 					}
 				}
 			}

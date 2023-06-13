@@ -40,3 +40,11 @@ int read_line(int fd,char** buff)
         (*buff)[count]='\0';
         return count;
 }
+
+int write_line(int fd,long long int num)
+{
+        // 针对大文件，使用自己定义的write_line函数一行一行的写。
+        char buffer[20];  // 假设num的最大位数不超过20位
+        int len = snprintf(buffer, sizeof(buffer), "%lld\n", num);
+        return write(fd, buffer, len);
+}
