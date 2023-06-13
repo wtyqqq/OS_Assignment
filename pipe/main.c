@@ -12,7 +12,6 @@ int main()
 {
 	struct timeval start,end;  
 	pid_t pid, pid1, pid2, pid3;
-	double duration;
 	int pipe_fd[2];
 	int pipe2_fd[2];
 	gettimeofday(&start, NULL); 
