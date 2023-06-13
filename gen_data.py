@@ -6,10 +6,8 @@
 @Author  :   Tianyi Wang
 @Version :   1.0
 @Contact :   tianyiwang58@gmail.com
-@Desc    :   None
+@Desc    :   generate dataset for OS assignment
 '''
-
-# here put the import lib
 
 def gen_data():
     # 生成1到1000的数据
