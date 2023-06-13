@@ -21,5 +21,6 @@ def gen_data():
 if __name__ == "__main__":
     gen_data()
     # 创建名为result的文件夹
-    os.mkdir("../result")
+    if not os.path.exists("../result"):
+        os.mkdir("../result")
     print("data.txt generated.")

@@ -217,7 +217,7 @@ gcc 版本      & 11.3.0                \\
 注：本次作业的所有代码均已开源至\href{https://github.com/wtyqqq/OS_Assignment}{github}，仓库内有详细的git提交记录可作为原创证据。
 \section{执行结果及分析}
 
-本次实验中我首先分别基于管道和共享内存的方法进行了进程间通信的实验。实验结果显示共享内存的性能远优于进程间通信。我们通过猜测河实验证明这是频繁的使用管道会导致过多的陷入内核，频繁的切换浪费了大量的时间。
+本次实验中我首先分别基于管道和共享内存的方法进行了进程间通信的实验。实验结果显示共享内存的性能远优于进程间通信。我们通过猜测和实验证明这是频繁的使用管道会导致过多的陷入内核，频繁的切换浪费了大量的时间。除此之外，我还自制了一个less工具，通过mmap函数实现了一些less工具的功能，加深了对于内存管理的理解。
 % \bibliographystyle{unsrt}
 % \nocite{*}
 \printbibliography[heading=bibintoc, title=\ebibname,sorting=none]
