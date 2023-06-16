@@ -20,7 +20,7 @@ int display_page(char *ptr, int offset)
         if (ptr[index] == '\n')
             count++; // 计算行数
         if (count == height)
-            break; // 显示第 7 行时停止
+            break; // 显示第 height-1行时停止
     }
     memcpy(buf, ptr, index); // 将内容复制到缓冲区
     buf[index] = '\0';     // 添加字符串结束符
